@@ -2,10 +2,10 @@ import { Cartwidget } from './Cartwidget';
 import { Link } from 'react-router-dom';
 
 const links = [
-    { to: "/urbanas", label: "Urbanas" },
-    { to: "/naked", label: "Naked" },
-    { to: "/deportivas", label: "Deportivas" },
-    { to: "/touring", label: "Touring" },
+    { to: "/Urban", label: "Urbanas" },
+    { to: "/Naked", label: "Naked" },
+    { to: "/Sport", label: "Deportivas" },
+    { to: "/Touring", label: "Touring" },
   ];
   
   export const Navbar = () => {
