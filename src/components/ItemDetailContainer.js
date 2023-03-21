@@ -9,7 +9,7 @@ const ItemDetailContainer =() => {
     useEffect(() => {
         SetLoading(true)
 
-        pedirProductoPorId(itemId)
+        pedirProductoPorId( Number(itemId))
             .then((resp) => {
                 setItem(resp)
             })
@@ -17,4 +17,14 @@ const ItemDetailContainer =() => {
                 SetLoading(false)
             })
     }, [])
+
+return (
+    <div>
+        {
+            loading
+                ? <h2> Cargando...</h2>
+                : <ItemDetail item={item}/>
+        }
+    </div>
+)
 }
