@@ -1,15 +1,36 @@
+import { useEffect } from "react"
+import { useState } from "react"
+import ItemList from './ItemList'
+import { pedirDatos } from "../helpers/pedirDatos"
 
-export const ItemListContainer = ({referencia, cilindrada, potencia, torque, peso}) => {
-    
+
+const ItemListContainer = () => {
+    const [productos, setProductos] = useState([])
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+        pedirDatos()
+            .then((Response) => {
+                setProductos(Response)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+            .finally(() => {
+                setLoading(false)
+            })
+    }, [])
+
     return (
-    <div>
-        <hr />
-        <h2>Referencia: {referencia}</h2>
-        <h3>Cilindrada: {cilindrada}</h3>
-        <h3>Potencia: {potencia}</h3>
-        <h3>Torque: {torque}</h3>
-        <h3>Peso: {peso}</h3>
-    </div>
+        <div className="contenedor">
+            {
+                loading
+                ? <h2>Cargando...</h2>
+                : <ItemList items={productos}/> 
+            }
+             
+        </div>
     )
  }
  
+ export default ItemListContainer

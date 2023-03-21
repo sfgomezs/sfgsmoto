@@ -1,30 +1,38 @@
 import { Cartwidget } from './Cartwidget';
+import { Link } from 'react-router-dom';
 
 const links = [
-    { href: "", label: "Urbanas" },
-    { href: "", label: "Naked" },
-    { href: "", label: "Deportivas" },
-    { href: "", label: "Touring" },
+    { to: "/urbanas", label: "Urbanas" },
+    { to: "/naked", label: "Naked" },
+    { to: "/deportivas", label: "Deportivas" },
+    { to: "/touring", label: "Touring" },
   ];
   
   export const Navbar = () => {
     return (
       <header className="header">
-        <img
-          src={
-            "https://www.yamahamotos.cl/wp-content/uploads/2019/10/logo-header-black.jpg"
-          }
-          className="header__logo"
-          alt="logo"
-        />
-        <div className="header__nav">
-          {links.map(({ label }) => {
-            return <h3 key={label}>{label}</h3>;
-          })}
+        <div className='header__container'>
+          <Link to="/">
+            <img
+              src={
+                "https://www.yamahamotos.cl/wp-content/uploads/2019/10/logo-header-black.jpg"
+              }
+              className="header__logo"
+              alt="logo"
+            />
+          </Link>
+
+          <nav className="navbar">
+            {links.map(({ label }) => {
+              return <Link className='navbar__link' key={label}>{label}</Link>;
+            })}
+          </nav>
+          <div className="header__buttons">
+            <Cartwidget />
+          </div>
         </div>
-        <div className="header__buttons">
-          <Cartwidget />
-        </div>
+        
+        
       </header>
     );
   };
